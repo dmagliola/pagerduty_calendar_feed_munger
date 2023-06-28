@@ -2,7 +2,7 @@ require "uri"
 require 'net/http'
 
 def munge_feed(feed_body)
-  feed_body.gsub(/((DTSTART|DTEND);VALUE=DATE-TIME:\d{8}T)080000Z/, "\\1000000Z")
+  feed_body.gsub(/((DTSTART|DTEND);VALUE=DATE-TIME:\d{8}T)080000Z/, "\\1000000+1:00")
     .gsub(/((DTSTART|DTEND);VALUE=DATE-TIME:\d{8}T)090000Z/, "\\1000000Z")
 end
 
