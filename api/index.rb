@@ -2,8 +2,8 @@ require "uri"
 require 'net/http'
 
 def munge_feed(feed_body)
-  feed_body.gsub(/((DTSTART|DTEND);VALUE=DATE-TIME:\d{8}T)080000Z/, "\\1000000")
-    .gsub(/((DTSTART|DTEND);VALUE=DATE-TIME:\d{8}T)090000Z/, "\\1000000")
+  feed_body.gsub(/(DTSTART|DTEND);VALUE=DATE-TIME:(\d{8})T080000Z/, "\\1;TZID=Europe/London:\\2T000000")
+    .gsub(/(DTSTART|DTEND);VALUE=DATE-TIME:(\d{8})T090000Z/, "\\1;TZID=Europe/London:\\2T000000")
 end
 
 def get_feed(user_id, team_id)
